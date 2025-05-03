@@ -14,17 +14,13 @@ const playGame = () => {
             setNegativeDecision();
             break;
         }
-        if (playerDecision) {
-            const playerChoice = getPlayerChoice(playerDecision);
-            if (playerChoice) {
-                const randomNum = Math.floor(Math.random() * 5 + 1);
-                if (playerChoice === randomNum) return correctResult();
-                else
-                    return incorrectResult(playerChoice, randomNum);
-            } else {
-                invalidChoice();
-            }
+        const playerChoice = getPlayerChoice(playerDecision);
+        if (!playerChoice) {
+            invalidChoice();
+            continue;
         }
+        const result = getRandomNumber(playerChoice);
+        if (!result) break;
     }
 }
 
@@ -67,6 +63,12 @@ const incorrectResult = (playerChoice, randomNum) => {
     } else {
         return setNegativeDecision();
     }
+}
+
+const getRandomNumber = (playerChoice) => {
+    const randomNum = Math.floor(Math.random() * 5 + 1);
+    if (playerChoice === randomNum) return correctResult();
+    else return incorrectResult(playerChoice, randomNum);
 }
 
 initGame();
