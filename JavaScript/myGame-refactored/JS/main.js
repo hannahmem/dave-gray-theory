@@ -22,28 +22,28 @@ const playGame = () => {
         const result = getRandomNumber(playerChoice);
         if (!result) break;
     }
-}
+};
 
 const getPlayerDecision = () => {
     const playerDecision = prompt("Can you guess the number I am thinking from 1 to 5?");
     if (playerDecision || playerDecision == "") return playerDecision;
     else
         return false;
-}
+};
 
 const invalidChoice = () => {
     return alert("You didn't choose a number from 1 to 5.");
-}
+};
 
 const setNegativeDecision = () => {
     return alert("Let's play next time!");
-}
+};
 
 const getPlayerChoice = (playerDecision) => {
     const playerChoice = Number(playerDecision);
     if (playerChoice > 0 && playerChoice < 6 || playerChoice === "")
         return playerChoice;
-}
+};
 
 const correctResult = () => {
     const playAgain =
@@ -53,7 +53,7 @@ const correctResult = () => {
     } else {
         return alert("Let's rock again next time!")
     }
-}
+};
 
 const incorrectResult = (playerChoice, randomNum) => {
     const tryAgain =
@@ -63,12 +63,12 @@ const incorrectResult = (playerChoice, randomNum) => {
     } else {
         return setNegativeDecision();
     }
-}
+};
 
 const getRandomNumber = (playerChoice) => {
     const randomNum = Math.floor(Math.random() * 5 + 1);
     if (playerChoice === randomNum) return correctResult();
     else return incorrectResult(playerChoice, randomNum);
-}
+};
 
 initGame();
